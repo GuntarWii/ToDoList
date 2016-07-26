@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="row">
+            <div class="col-12">
+                <div class="header-bar-btn">
+                    <span href="#"></span>
+                    <span href="#"></span>
+                    <span href="#"></span>
+                </div>
+                <div class="hidden search-bar option" data-toggle-number="1">
+                    <a href="#" alt="Search"><span class="fa fa-search fa-2x"></span></a>
+                    <input type="text" name="search" placeholder="search">
+                </div>
+                <div class="hidden add-task-bar option" data-toggle-number="2">
+                    <div class="add-new-task block-1 ">
+                        <textarea id="task-text" name="Task" rows="1" placeholder="Add a new task" data-autosize-on="true" style="/* overflow: hidden;  word-wrap: break-word;height: 46px; "></textarea>
+
+                        <div class="add-task-icons">
+                            <label class="wi-replace-icons">
+                                <input type="checkbox" href="#" class="add-to-favorite">
+                                <span class="fa fa-star-o fa-lg favorite"></span>
+                            </label>
+                            <button href="#" class="add-the-date"><span class="fa fa-calendar fa-lg"></span></button>
+                            <span href="#" class="">
+                               <span class="fa fa-circle fa-lg category-button"></span></span>
+                        </div>
+                    </div>
+                    <div class="add-new-task block-2 ">
+                        <p>
+                            Select a category
+                        </p>
+                        <div class="select-category-icons">
+                            <button class="green checked category-btn" id="social"><span class=" fa fa-users"></span></button>
+                            <button class="purple checked category-btn" id="network"><span class=" fa fa-desktop"></span></button>
+                            <button class="yellow checked category-btn" id="work"><span class=" fa fa-briefcase"></span></button>
+                            <button class="red category-btn" id="home"><span class="fa fa-home"></span></button>
+                        </div>
+                        <span class="category-button-arrow"></span>
+                    </div>
+                </div>
+                <h3 class="header-all-tasks">All tasks</h3>
+                <div class="header-opt-btn">
+                    <button class="fa fa-search fa-lg search-btn toggle-option" data-toggle-number="1"></button>
+                    <button class="fa fa-plus-circle fa-lg add-task-btn toggle-option" data-toggle-number="2"></button>
+                </div>
+            </div>
+        </header>
+        <main class="row offset-2 offset-10">
+            <nav class="menu col-2">
+                <ul class="navbar">
+                    <li class="purple arrow cat-filtr" data-category-filter="all">
+                        <span class="fa fa-inbox fa-lg"></span>
+                    </li>
+                    <li class="red first cat-filtr" data-category-filter="work">
+                        <span class="fa fa-home fa-lg"></span>
+                    </li>
+                    <li class="yellow cat-filtr" data-category-filter="home">
+                        <span class="fa fa-desktop fa-lg"></span>
+                    </li>
+                    <li class="purple cat-filtr" data-category-filter="network">
+                        <span class="fa fa-briefcase fa-lg"></span>
+                    </li>
+                    <li class="green cat-filtr" data-category-filter="social">
+                        <span class="fa fa-users fa-lg"></span>
+                    </li>
+                </ul>
+            </nav>
+            <div class="main-body col-10">
+                <div class="favorite-task-block">
+
+                </div>
+                <section class="details hidden row option" data-toggle-number="3">
+                    <div class="claendar  col-6">
+                        <div class="set-due-date hidden option" data-toggle-number="5">
+                            <div class="calendar-controls">
+                                <span><a href="#">&lt;</a></span>
+                                <span>September</span>
+                                <span><a href="#">&gt;</a></span>
+                            </div>
+                            <table class="calendar">
+                                <thead class="calendar-header">
+                                    <tr>
+                                        <th>mon</th>
+                                        <th>tue</th>
+                                        <th>wed</th>
+                                        <th>thu</th>
+                                        <th>fri</th>
+                                        <th>sat</th>
+                                        <th>sun</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="calendar-body">
+                                    <tr>
+                                        <td class="prev-next-month">24</td>
+                                        <td class="prev-next-month">25</td>
+                                        <td class="prev-next-month">26</td>
+                                        <td class="prev-next-month">27</td>
+                                        <td class="prev-next-month">28</td>
+                                        <td><a href="#">1</a></td>
+                                        <td><a href="#">2</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#">3</a></td>
+                                        <td><a href="#">4</a></td>
+                                        <td><a href="#">5</a></td>
+                                        <td><a href="#">6</a></td>
+                                        <td><a href="#">7</a></td>
+                                        <td><a href="#">8</a></td>
+                                        <td><a href="#">9</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#">10</a></td>
+                                        <td><a href="#">11</a></td>
+                                        <td><a href="#" class="cell-border">12</a></td>
+                                        <td><a href="#">13</a></td>
+                                        <td><a href="#" class="cell-background">14</a></td>
+                                        <td><a href="#">15</a></td>
+                                        <td><a href="#">16</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#">17</a></td>
+                                        <td><a href="#">18</a></td>
+                                        <td><a href="#">19</a></td>
+                                        <td><a href="#">20</a></td>
+                                        <td><a href="#">21</a></td>
+                                        <td><a href="#">22</a></td>
+                                        <td><a href="#">23</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#">24</a></td>
+                                        <td><a href="#">25</a></td>
+                                        <td><a href="#">26</a></td>
+                                        <td><a href="#">27</a></td>
+                                        <td><a href="#">28</a></td>
+                                        <td class="prev-next-month">1</td>
+                                        <td class="prev-next-month">2</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-6 task-details" data-side-bar="dop-option">
+<!--
+                        <div class="task-details-block task-details-border">
+                            <div class="col-1 checkbox-empty-fix">
+                                <label class="status-replace-icons said-dop-option">
+                                    <input type="checkbox" href="#" class="add-to-favorite"> 
+                                    <span class="fa fa-star-o fa-lg task-status"></span>
+                                    </label>
+                            </div>
+                            <div class="col-11 taks task-content-details-big">
+                                <h2 class="side-opt-task-name" contenteditable="true">Buy a new toothbrush</h2>
+                                <button href="#" class="favourite-2"><span class="fa fa-star-o"></span></button>
+                            </div>
+                        </div>
+                        <div class="task-details-block task-details-border set-up-data toggle-option" data-toggle-number="5">
+                            <div class="task-details-block" id="clandar">
+                                <div class="col-1 checkbox-empty">
+                                    <span class="centered fa fa-calendar fa-lg"></span>
+                                </div>
+                                <div class="col-11 taks task-content-details">
+                                    <p> Set a due date</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="task-details-block task-details-border">
+                            <div class="task-details-block">
+                                <div class="col-1 checkbox-empty">
+                                    <span class=" fa fa-clock-o fa-lg"></span>
+                                </div>
+                                <div class="col-11 taks task-content-details">
+                                    <p>Set a reminder</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="task-details-block task-details-border">
+                            <div class="task-details-block">
+                                <div class="col-1 teal-content checkbox-empty">
+                                    <span class="fa fa-circle fa-lg"></span>
+                                </div>
+                                <div class="col-11 taks task-content-details">
+                                    <p>Home</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="task-details-block ">
+                            <div class="task-details-block">
+                                <div class="col-1 checkbox-empty">
+                                    <span class=" fa fa-edit fa-lg"></span>
+                                </div>
+                                <div class="col-11 taks task-content-details">
+                                    <p>Add note</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="paperclip">
+                            <a href="#"><span class="fa fa-paperclip fa-lg"></span></a>
+-->
+                        </div>
+                    
+                </section>
+                <sectiom class="col-a col-6" id="col-a">
+                </sectiom>
+                <sectiom class="col-b col-6" id="col-b">
+                </sectiom>
+            </div>
+            <button href="#" class="nav-inv-btn"><span class=" nav-icon fa fa-cog fa-lg"></span></button>
+        </main>
+    </div>
+    
+    <script src="js/createTask.js"></script>
+    <script src="js/toogle.js"></script>
+     <script src="js/TaskStatus.js"></script>
+     <script src="js/TaskCategory.js"></script>
+     <script src="js/SideOption.js"></script>
+     <script src="js/BuildNewTask.js"></script>
+
+</body>
+
+</html>
