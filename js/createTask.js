@@ -317,13 +317,13 @@ function taskStatus() {
     while (target.parentNode) {
         if (target.hasAttribute("data-id-number")) {
             var currentAtr = target.getAttribute("data-id-number");
-
+                console.log(target.classList)
             break;
         }
 
         
         else if(target.hasAttribute("data-side-bar")){
-              var currentAtr = target.getAttribute("data-id-number");
+//              var currentAtr = target.getAttribute("data-id-number");
                
                
                break;
@@ -333,7 +333,6 @@ function taskStatus() {
                 target = target.parentNode;
     }
     
-//    console.log(target)
 
     target.classList.toggle("checked")
     
@@ -386,17 +385,24 @@ function taskStatus() {
         col.insertBefore(target, col.firstChild)
 
     }
+    
 
 }
 
 
-document.body.addEventListener('click', function () {
+ document.body.addEventListener('click', function () {
+    
+    
 	var target = event.target;
 	var task = $(".task-content-small");
+    
+    
 
 	while (target.parentNode) {
 		if (target.hasAttribute("data-id-number")) {
 			var currentAtr = target.getAttribute("data-id-number");
+            var currentDiv = target;
+        
 		
 			break;
 		}
@@ -405,6 +411,8 @@ document.body.addEventListener('click', function () {
 
 		}
 
+ 
+        
 	var currentAtr;
 	
 //console.log(currentAtr +' Atribut')
@@ -438,23 +446,24 @@ document.body.addEventListener('click', function () {
 //				var sidOptTaskName = $(".side-opt-task-name");
 //				sidOptTaskName.innerHTML = TaskListArray[currentAtr].Taskname
 //				console.log(TaskListArray[i].taskid)
-                sideOption(currentAtr)
+                sideOption(currentAtr,currentDiv)
                 
 			}
                     
                 }
-        
+
 
 });
 
 
-function sideOption(currentAtr){
+
+function sideOption(currentAtr,currentDiv){
     
-    console.log("sss")
+    
 	var sidOptTaskName = $(".side-opt-task-name");
     var Details = $(".details");
-    
-        var SaidOption = $(".task-details");
+    var currentAtr;
+    var SaidOption = $(".task-details");
     
 //    console.log("testing")
     SaidOption.innerHTML = ''
@@ -464,7 +473,7 @@ function sideOption(currentAtr){
         var Details = $(".task-details");
     
     
-    
+    Details.dataset.dataIdNumber === currentAtr
     
 
 //    var element = document.createElement("div");
@@ -499,7 +508,7 @@ function sideOption(currentAtr){
                                     </label>\
                             </div>\
                             <div class="col-11 taks task-content-details-big">\
-                                <h2 onkeyup="myFunction()" class="side-opt-task-name" contenteditable="true">'+ TaskListArray[currentAtr].Taskname +'</h2>\
+                                <h2 onkeyup="myFunction()" class="side-opt-task-name" contenteditable="true" data-side-number='+ currentAtr +'>'+ TaskListArray[currentAtr].Taskname +'</h2>\
                                 <button href="#" class="favourite-2"><span class="fa fa-star-o"></span></button>\
                             </div>\
                         </div>\
@@ -551,6 +560,7 @@ function sideOption(currentAtr){
 //   Details.appendChild(element);
                     
                     
+                    
     if (TaskListArray[currentAtr].TaskStatus == "task-done") {
         
         var sideTest = $('.taskdop-status-box');
@@ -563,21 +573,59 @@ function sideOption(currentAtr){
     }
     
     
+//    console.log(currentDiv.childNodes)
+    
+//    var currentDiv;
+//    myFunction(currentDiv)
+//    
+//    var taskName = $$(".task-name");
+//    
+//    console.log(taskName[currentAtr])
+//    
+//    for(var i = 0; i < currentDiv.childNodes.length; i++){
+//        
+//            console.log(currentDiv.childNodes[i].innerHTML)
+//    }
     
     
-
+//  myFunction(currentAtr)
 
 //    
 ////    console.log(allTasks)
 //	sidOptTaskName.innerHTML = TaskListArray[currentAtr].Taskname
+    
+//    var taksNanme = $(".side-opt-task-name").innerHTML;
+//    TaskListArray[currentAtr].Taskname = taksNanme
+//    console.log(taksNanme)
+//    
+//    console.log(TaskListArray[currentAtr].Taskname)
+    
+//    myFunction()
+    //        
+//    TaskListArray[currentAtr].Taskname = taksNanme
+
      
 addEventListener()
+
 }
 
 
-function myFunction(){
+function myFunction(currentAtr){
+        var taksNanme = $(".side-opt-task-name").innerHTML;
+        var test = $(".side-opt-task-name").getAttribute("data-side-number");
+        console.log(test)
+        
+        TaskListArray[test].Taskname = taksNanme;
     
-    console.log($("side-opt-task-name").innerHTML)
+    	$(".col-a").innerHTML = ""
+	$(".col-b").innerHTML = ""
+    $(".favorite-task-block").innerHTML = ""
+    
+                        for(var i = 0; i < TaskListArray.length; i++){
+                        
+                        createTask(i)
+                    }
+
 }
 
 
