@@ -22,45 +22,61 @@ for (var i = 0; i < taskCategoryBtn.length; i++) {
 
 
 
-var favoriteStatus
-    , taskCategory
-    , taskIdNumber = 0;
+var favoriteStatus, taskCategory, taskIdNumber = 0;
 var TaskListArray = [
 
 	   task = {
-        Taskname: "Html Task"
-        , Category: "work"
-        , Favorite: "no"
-        , TaskDate: undefined
-        , TaskStatus: "task-done"
-        , taskid: taskIdNumber
+        Taskname: "Html Task 0 ",
+        Category: "work",
+        Favorite: "no",
+        TaskDate: undefined,
+        TaskStatus: "task-done",
+        taskid: taskIdNumber
 	 },
 
 	   task = {
-        Taskname: "Java srcipt"
-        , Category: "work"
-        , Favorite: "no"
-        , TaskDate: undefined
-        , TaskStatus: "task-not-done"
-        , taskid: taskIdNumber
+        Taskname: "Java srcipt 1",
+        Category: "work",
+        Favorite: "no",
+        TaskDate: undefined,
+        TaskStatus: "task-done",
+        taskid: taskIdNumber
 	 },
-
+//
 		task = {
-        Taskname: "Css style part"
-        , Category: "work"
-        , Favorite: "no"
-        , TaskDate: undefined
-        , TaskStatus: "task-not-done"
-        , taskid: taskIdNumber
+        Taskname: "Css style part 2 ",
+        Category: "work",
+        Favorite: "no",
+        TaskDate: undefined,
+        TaskStatus: "task-done",
+        taskid: taskIdNumber
 	 },
 
         task = {
-        Taskname: "small task to finish do to list"
-        , Category: "work"
-        , Favorite: "yes"
-        , TaskDate: undefined
-        , TaskStatus: "task-not-done"
-        , taskid: taskIdNumber
+        Taskname: "small task to finish do to list 3",
+        Category: "work",
+        Favorite: "yes",
+        TaskDate: undefined,
+        TaskStatus: "task-done",
+        taskid: taskIdNumber
+	 },
+
+        task = {
+        Taskname: "Css style part 4",
+        Category: "work",
+        Favorite: "no",
+        TaskDate: undefined,
+        TaskStatus: "task-done",
+        taskid: taskIdNumber
+	 },
+
+            task = {
+        Taskname: "Css style part 5",
+        Category: "work",
+        Favorite: "no",
+        TaskDate: undefined,
+        TaskStatus: "task-done",
+        taskid: taskIdNumber
 	 }
 
 
@@ -69,9 +85,9 @@ var TaskListArray = [
 //console.log(TaskListArray[0].Category)
 function getTaskValues() {
 
-    var taskName = $("#task-text").value
-        , addToFavroite = $(".add-to-favorite")
-        , taskDate = $(".add-date");
+    var taskName = $("#task-text").value,
+        addToFavroite = $(".add-to-favorite"),
+        taskDate = $(".add-date");
 
 
     //	console.log(addTaskName.value)
@@ -79,18 +95,18 @@ function getTaskValues() {
     taskIdNumber = TaskListArray.length
 
     var task = {
-        Taskname: $("#task-text").value
-        , Category: taskCategory
-        , Favorite: favoriteStatus
-        , TaskDate: undefined
-        , TaskStatus: undefined
-        , taskid: taskIdNumber
-        
+        Taskname: $("#task-text").value,
+        Category: taskCategory,
+        Favorite: favoriteStatus,
+        TaskDate: undefined,
+        TaskStatus: "task-not-done",
+        taskid: taskIdNumber
+
     }
-    
+
     TaskListArray.push(task)
-//    console.log(TaskListArray)
-//    console.log(taskIdNumber)
+        //    console.log(TaskListArray)
+        //    console.log(taskIdNumber)
     createTask()
 
 }
@@ -137,13 +153,13 @@ function createTask(TasknameId) {
 
 
     var
-        colA = document.getElementById('col-a').offsetHeight
-        , colB = document.getElementById('col-b').offsetHeight
-        , taskBoks = document.createElement("div")
-        , favorite = $(".favorite-task-block");
+        colA = document.getElementById('col-a').offsetHeight,
+        colB = document.getElementById('col-b').offsetHeight,
+        taskBoks = document.createElement("div"),
+        favorite = $(".favorite-task-block");
 
 
-//    	taskIndex += 1
+    //    	taskIndex += 1
 
 
     if (TasknameId !== undefined) {
@@ -154,18 +170,27 @@ function createTask(TasknameId) {
         taskIndex += 1
     }
 
-//console.log(taskIndex)
-//console.log(TaskListArray)
+//    console.log(taskIndex)
+    //console.log(TaskListArray)
 
     taskBoks.className = "task";
     taskBoks.setAttribute("data-id-number", taskIndex)
+    
+    
+        if (TaskListArray[taskIndex].TaskStatus == "task-done") {
+         
+         var tops = 'checked="checked"';
+         }else{
+             var tops = ' ';
+         }
 
 
+        
     if (TaskListArray[taskIndex].Favorite == "yes") {
         taskBoks.innerHTML = '<section class="main-task offset-1 offset-10m">\
 					<div class="col-1 checkbox">\
 						<label class="status-replace-icons">\
-	           <input type="checkbox" href="#" class="add-to-favorite task-status-box" >\
+	           <input type="checkbox" href="#" class="add-to-favorite task-status-box" '+ tops +'>\
 	                   <span class="fa fa-star-o fa-lg task-status"></span>\
                         </label>\
 					</div>\
@@ -184,11 +209,11 @@ function createTask(TasknameId) {
         taskBoks.innerHTML = '\
 		<div class="col-md-2 checkbox">\
 			<label class="status-replace-icons">\
-	<input type="checkbox" href="#" class="add-to-favorite task-status-box" >\
+	<input type="checkbox" href="#" class="add-to-favorite task-status-box"  '+ tops +'>\
 	<span class="fa fa-star-o fa-lg task-status"></span>\
 </label>\
 		</div>\
-<div class="col-md-10 purple task-content-small toggle-option" id=" ' + taskIndex + '" data-toggle-number="3" data-id-number="' + taskIndex + '">\
+<div class="col-md-10 purple task-content-small toggle-option" id=" ' + taskIndex + '" data-toggle-number="3">\
 <p class="location-and-date location-and-date-small" id="time-now">Tomorrow</p>\
 	<div class="task-name">\
 <span>' + TaskListArray[taskIndex].Taskname + '\
@@ -212,19 +237,14 @@ function createTask(TasknameId) {
     if (TaskListArray[taskIndex].TaskStatus == "task-done") {
         taskBoks.className += " checked";
 
-        var sss = $('.task-status-box');
-
-        sss.setAttribute("checked", "checked");
-
-
     }
-    
-    
+
+//
     TaskListArray[taskIndex].taskid = taskIndex
-    
+
     tooggle()
     addEventListener()
-    
+
 
 }
 
@@ -235,51 +255,51 @@ function createTask(TasknameId) {
 
 function tooggle() {
 
-	var toggle = $$(".toggle-option");
-        
-	for (var i = 0; i < toggle.length; i++) {
+    var toggle = $$(".toggle-option");
 
-        
-		toggle[i].addEventListener('click', togller, true);
-		//		toggle[i].addEventListener('click', docClick, false);
-	}
+    for (var i = 0; i < toggle.length; i++) {
+
+
+        toggle[i].addEventListener('click', togller, true);
+        //		toggle[i].addEventListener('click', docClick, false);
+    }
 
 }
 
 function togller(event) {
-		var current = this.dataset.toggleNumber,
-			options = $$(".option"),
-			dopOption = $(".details"),
-			dopOptTarget = event.target;
+    var current = this.dataset.toggleNumber,
+        options = $$(".option"),
+        dopOption = $(".details"),
+        dopOptTarget = event.target;
 
-		//		console.log(this)
-		for (var i = 0; i < options.length; i++) {
-			var hiddenAtr = options[i].dataset.toggleNumber;
-			
-//			console.log(hiddenAtr)
+    //		console.log(this)
+    for (var i = 0; i < options.length; i++) {
+        var hiddenAtr = options[i].dataset.toggleNumber;
 
-			if (current == hiddenAtr) {
+        //			console.log(hiddenAtr)
 
-				options[i].classList.toggle("hidden");
+        if (current == hiddenAtr) {
 
-				// Ja viņš nav vienāds ar piespiesto elementu un tam nav klases hidden
-			} else if (options[i].className.indexOf("hidden") == -1) {
+            options[i].classList.toggle("hidden");
 
-				if (dopOption.className.indexOf("hidden") == -1) {
+            // Ja viņš nav vienāds ar piespiesto elementu un tam nav klases hidden
+        } else if (options[i].className.indexOf("hidden") == -1) {
 
-					if (dopOptTarget.parentElement == $(".header-opt-btn")) {
-						options[i].classList.toggle("hidden");
-					}
-					// ja taisa parbaude a target ja tiek klikšķināts arpus ditiles lauka tad toggle ja ne tad radit dop options				
-				} else {
-					options[i].classList.toggle("hidden");
-				}
-			}
-		}
+            if (dopOption.className.indexOf("hidden") == -1) {
+
+                if (dopOptTarget.parentElement == $(".header-opt-btn")) {
+                    options[i].classList.toggle("hidden");
+                }
+                // ja taisa parbaude a target ja tiek klikšķināts arpus ditiles lauka tad toggle ja ne tad radit dop options				
+            } else {
+                options[i].classList.toggle("hidden");
+            }
+        }
+    }
 
 
-	}
-	
+}
+
 
 tooggle()
 
@@ -291,14 +311,15 @@ function addEventListener() {
 
     var taskStatusBtn = $$(".task-status");
 
-    
-//        for (var i = 0; i < taskStatusBtn.length; i++) {
-//        taskStatusBtn[i].removeEventListener('click', taskStatus, false);
-//    }
+
+    //        for (var i = 0; i < taskStatusBtn.length; i++) {
+    //        taskStatusBtn[i].removeEventListener('click', taskStatus, false);
+    //    }
 
     for (var i = 0; i < taskStatusBtn.length; i++) {
         taskStatusBtn[i].addEventListener('click', taskStatus, false);
     }
+
 
 }
 
@@ -314,172 +335,173 @@ function taskStatus() {
     var allTasks = $$(".task")
 
 
+    //    console.log(this)
     while (target.parentNode) {
         if (target.hasAttribute("data-id-number")) {
             var currentAtr = target.getAttribute("data-id-number");
-                console.log(target.classList)
+
+
+            var colb = $(".col-b"),
+                cola = $(".col-a"),
+                favcol = $(".favorite-task-block");
+
+            if (target.childNodes[0].className == "main-task offset-1 offset-10m") {
+                //        
+                var col = favcol
+
+
+            } else {
+
+                if (colb.offsetHeight < cola.offsetHeight) {
+                    var col = colb
+
+                } else {
+                    var col = cola
+                }
+
+
+            }
+            
+            
+            console.log(target)
+
+            if (target.classList.contains("checked")) {
+
+                col.appendChild(target)
+
+            } else if (!target.classList.contains("checked")) {
+                col.insertBefore(target, col.firstChild)
+            }
+
+            
+
+            target.classList.toggle("checked")
+
+
+            break;
+        
+        }else if (target.hasAttribute("data-side-bar")) {
+            var currentAtr = target.getAttribute("data-side-bar");
+//            console.log(currentAtr)
+            
+            
+            
             break;
         }
 
-        
-        else if(target.hasAttribute("data-side-bar")){
-//              var currentAtr = target.getAttribute("data-id-number");
-               
-               
-               break;
-        }
-        
-        
-                target = target.parentNode;
+        target = target.parentNode;
     }
     
-
-    target.classList.toggle("checked")
-    
-
-    if (TaskListArray[currentAtr].TaskStatus == "task-not-done") {
-        TaskListArray[currentAtr].TaskStatus = "task-done"
-
-    } else if (TaskListArray[currentAtr].TaskStatus = "task-done") {
-        TaskListArray[currentAtr].TaskStatus = "task-not-done"
-    }
-
     console.log(TaskListArray[currentAtr].TaskStatus)
 
-    //    console.log(TaskListArray[currentAtr])
-    //    console.log(allTasks[1])
-
-//    console.log(target.childNodes[0].className )
-
-    var colb = $(".col-b")
-        , cola = $(".col-a"),
-        favcol = $(".favorite-task-block");
+//    console.log(TaskListArray[currentAtr].taskid)
+////    console.log(TaskListArray[currentAtr]x)
     
-    if (target.childNodes[0].className == "main-task offset-1 offset-10m") {
-//        
-        var col = favcol
-        
-        
-    }else{
-        
-    if (colb.offsetHeight < cola.offsetHeight) {
-        var col = colb
-        
-    }else{
-         var col = cola
-    }
-        
-        
+    
+//    TaskListArray[currentAtr].TaskStatus = "task-done"
+    
+    if(TaskListArray[currentAtr].TaskStatus == "task-done"){
+        TaskListArray[currentAtr].TaskStatus = "task-not-done"
+    }else if(TaskListArray[currentAtr].TaskStatus == "task-not-done"){
+        TaskListArray[currentAtr].TaskStatus = "task-done"
     }
     
-    
-    
-    
-    
+        console.log(TaskListArray[currentAtr].TaskStatus)
 
-    if (target.classList.contains("checked")) {
-
-        col.appendChild(target)
-
-    } else if (!target.classList.contains("checked")) {
-        col.insertBefore(target, col.firstChild)
-
-    }
-    
 
 }
 
 
- document.body.addEventListener('click', function () {
-    
-    
-	var target = event.target;
-	var task = $(".task-content-small");
-    
-    
+document.body.addEventListener('click', function () {
 
-	while (target.parentNode) {
-		if (target.hasAttribute("data-id-number")) {
-			var currentAtr = target.getAttribute("data-id-number");
+
+    var target = event.target;
+    var task = $(".task-content-small");
+
+
+
+    while (target.parentNode) {
+        if (target.hasAttribute("data-id-number")) {
+            var currentAtr = target.getAttribute("data-id-number");
             var currentDiv = target;
-        
-		
-			break;
-		}
-		
-		target = target.parentNode;
-
-		}
-
- 
-        
-	var currentAtr;
-	
-//console.log(currentAtr +' Atribut')
-//console.log(TaskListArray.taskid +' Task id')
-	
-//		if(currentAtr == undefined){
-//            for (var i = 0; i < TaskListArray.length; i++) {
-//
-//
-//			if (TaskListArray[i].taskid == currentAtr) {
-////				console.log("this")
-////				console.log(TaskListArray[currentAtr].Taskname + "ssss")
-////				var sidOptTaskName = $(".side-opt-task-name");
-////				sidOptTaskName.innerHTML = TaskListArray[currentAtr].Taskname
-////				console.log(TaskListArray[i].taskid)
-//				sideOption(currentAtr)
-//					console.log("currentAtr")
-//			}
-//            
-//			
-//		}
-//        }
-    
-    
-                for (var i = 0; i < TaskListArray.length; i++) {
 
 
-			if (TaskListArray[i].taskid == currentAtr) {
-//				console.log("this")
-//				console.log(TaskListArray[currentAtr].Taskname + "ssss")
-//				var sidOptTaskName = $(".side-opt-task-name");
-//				sidOptTaskName.innerHTML = TaskListArray[currentAtr].Taskname
-//				console.log(TaskListArray[i].taskid)
-                sideOption(currentAtr,currentDiv)
-                
-			}
-                    
-                }
+            break;
+        }
+
+        target = target.parentNode;
+
+    }
+
+
+
+    var currentAtr;
+
+    //console.log(currentAtr +' Atribut')
+    //console.log(TaskListArray.taskid +' Task id')
+
+    //		if(currentAtr == undefined){
+    //            for (var i = 0; i < TaskListArray.length; i++) {
+    //
+    //
+    //			if (TaskListArray[i].taskid == currentAtr) {
+    ////				console.log("this")
+    ////				console.log(TaskListArray[currentAtr].Taskname + "ssss")
+    ////				var sidOptTaskName = $(".side-opt-task-name");
+    ////				sidOptTaskName.innerHTML = TaskListArray[currentAtr].Taskname
+    ////				console.log(TaskListArray[i].taskid)
+    //				sideOption(currentAtr)
+    //					console.log("currentAtr")
+    //			}
+    //            
+    //			
+    //		}
+    //        }
+
+
+    for (var i = 0; i < TaskListArray.length; i++) {
+
+
+        if (TaskListArray[i].taskid == currentAtr) {
+            //				console.log("this")
+            //				console.log(TaskListArray[currentAtr].Taskname + "ssss")
+            //				var sidOptTaskName = $(".side-opt-task-name");
+            //				sidOptTaskName.innerHTML = TaskListArray[currentAtr].Taskname
+            //				console.log(TaskListArray[i].taskid)
+            sideOption(currentAtr, currentDiv)
+
+        }
+
+    }
 
 
 });
 
 
 
-function sideOption(currentAtr,currentDiv){
-    
-    
-	var sidOptTaskName = $(".side-opt-task-name");
+function sideOption(currentAtr, currentDiv) {
+
+
+    var sidOptTaskName = $(".side-opt-task-name");
     var Details = $(".details");
     var currentAtr;
     var SaidOption = $(".task-details");
-    
-//    console.log("testing")
-    SaidOption.innerHTML = ''
-    
-    
-    
-        var Details = $(".task-details");
-    
-    
-    Details.dataset.dataIdNumber === currentAtr
-    
 
-//    var element = document.createElement("div");
-//    console.log(TaskListArray[currentAtr].Category)
-    
-    switch(TaskListArray[currentAtr].Category) {
+    //    console.log("testing")
+    SaidOption.innerHTML = ''
+
+
+
+    var Details = $(".task-details");
+
+
+    //    Details.dataset.idNumber = currentAtr;
+    SaidOption.dataset.sideBar = currentAtr;
+
+    //    var element = document.createElement("div");
+    //    console.log(TaskListArray[currentAtr].Category)
+
+    switch (TaskListArray[currentAtr].Category) {
     case "work":
         var cat = " workDop"
         break;
@@ -496,19 +518,19 @@ function sideOption(currentAtr,currentDiv){
 
     default:
         var cat = "workDop"
-}
+    }
 
-    
+
     SaidOption.innerHTML = '\
                         <div class="task-details-block task-details-border">\
                             <div class="col-1 checkbox-empty-fix">\
                                 <label class="status-replace-icons said-dop-option">\
-                                    <input  type="checkbox" href="#" class="add-to-favorite taskdop-status-box"> \
+                                    <input onclick="myFunction()"  type="checkbox" href="#" class="add-to-favorite taskdop-status-box"> \
                                     <span class="fa fa-star-o fa-lg task-status"></span>\
                                     </label>\
                             </div>\
                             <div class="col-11 taks task-content-details-big">\
-                                <h2 onkeyup="myFunction()" class="side-opt-task-name" contenteditable="true" data-side-number='+ currentAtr +'>'+ TaskListArray[currentAtr].Taskname +'</h2>\
+                                <h2 onkeyup="myFunction()" class="side-opt-task-name" contenteditable="true" data-side-number=' + currentAtr + '>' + TaskListArray[currentAtr].Taskname + '</h2>\
                                 <button href="#" class="favourite-2"><span class="fa fa-star-o"></span></button>\
                             </div>\
                         </div>\
@@ -534,11 +556,11 @@ function sideOption(currentAtr,currentDiv){
                         </div>\
                         <div class="task-details-block task-details-border">\
                             <div class="task-details-block change">\
-                                <div class="col-1 '+ cat +' checkbox-empty">\
+                                <div class="col-1 ' + cat + ' checkbox-empty">\
                                     <span class="fa fa-circle fa-lg"></span>\
                                 </div>\
                                 <div class="col-11 taks task-content-details">\
-                                    <p>'+ TaskListArray[currentAtr].Category +'</p>\
+                                    <p>' + TaskListArray[currentAtr].Category + '</p>\
                                 </div>\
                             </div>\
                         </div>\
@@ -556,93 +578,46 @@ function sideOption(currentAtr,currentDiv){
                             <a href="#"><span class="fa fa-paperclip fa-lg"></span></a>\
                         </div>\
                     '
-    
-//   Details.appendChild(element);
-                    
-                    
-                    
+
+    //   Details.appendChild(element);
+
+
+
     if (TaskListArray[currentAtr].TaskStatus == "task-done") {
-        
+
         var sideTest = $('.taskdop-status-box');
-        
 
-        
-        sideTest.checked=true;
-        
-       
+
+
+        sideTest.checked = true;
+
+
     }
-    
-    
-//    console.log(currentDiv.childNodes)
-    
-//    var currentDiv;
-//    myFunction(currentDiv)
-//    
-//    var taskName = $$(".task-name");
-//    
-//    console.log(taskName[currentAtr])
-//    
-//    for(var i = 0; i < currentDiv.childNodes.length; i++){
-//        
-//            console.log(currentDiv.childNodes[i].innerHTML)
-//    }
-    
-    
-//  myFunction(currentAtr)
 
-//    
-////    console.log(allTasks)
-//	sidOptTaskName.innerHTML = TaskListArray[currentAtr].Taskname
-    
-//    var taksNanme = $(".side-opt-task-name").innerHTML;
-//    TaskListArray[currentAtr].Taskname = taksNanme
-//    console.log(taksNanme)
-//    
-//    console.log(TaskListArray[currentAtr].Taskname)
-    
-//    myFunction()
-    //        
-//    TaskListArray[currentAtr].Taskname = taksNanme
 
-     
-addEventListener()
+
+
+    addEventListener()
 
 }
 
 
-function myFunction(currentAtr){
-        var taksNanme = $(".side-opt-task-name").innerHTML;
-        var test = $(".side-opt-task-name").getAttribute("data-side-number");
-        console.log(test)
-        
-        TaskListArray[test].Taskname = taksNanme;
-    
-    	$(".col-a").innerHTML = ""
-	$(".col-b").innerHTML = ""
+
+function myFunction(currentAtr) {
+    var taksNanme = $(".side-opt-task-name").innerHTML;
+    var test = $(".side-opt-task-name").getAttribute("data-side-number");
+    console.log(test)
+
+
+    TaskListArray[test].Taskname = taksNanme;
+
+    $(".col-a").innerHTML = ""
+    $(".col-b").innerHTML = ""
     $(".favorite-task-block").innerHTML = ""
-    
-                        for(var i = 0; i < TaskListArray.length; i++){
-                        
-                        createTask(i)
-                    }
+
+    for (var i = 0; i < TaskListArray.length; i++) {
+
+        createTask(i)
+    }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-
